@@ -4,6 +4,7 @@
 //
 
 #import "LoggingListener.h"
+#import <RobotKit/RobotKit.h>
 
 @interface LoggingListener () {
     dispatch_once_t _connectedOnceToken;
@@ -12,6 +13,11 @@
 @property (nonatomic) BOOL sawOneBlink;
 @property (nonatomic, weak) AppDelegate* delegate;
 @property (nonatomic) id<IXNMuseFileWriter> fileWriter;
+
+@property (nonatomic) BOOL ledOn;
+@property (strong, nonatomic) IBOutlet UILabel* connectionLabel;
+@property (strong, atomic) RKConvenienceRobot* robot;
+
 @end
 
 @implementation LoggingListener
@@ -22,14 +28,24 @@
      * Set <key>UIFileSharingEnabled</key> to true in Info.plist if you want
      * to see the file in iTunes
      */
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(
-//        NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString *filePath =
-//        [documentsDirectory stringByAppendingPathComponent:@"new_muse_file.muse"];
-//    self.fileWriter = [IXNMuseFileFactory museFileWriterWithPathString:filePath];
-//    [self.fileWriter addAnnotationString:1 annotation:@"fileWriter created"];
-//    [self.fileWriter flush];
+    //    NSArray *paths = NSSearchPathForDirectoriesInDomains(
+    //        NSDocumentDirectory, NSUserDomainMask, YES);
+    //    NSString *documentsDirectory = [paths objectAtIndex:0];
+    //    NSString *filePath =
+    //        [documentsDirectory stringByAppendingPathComponent:@"new_muse_file.muse"];
+    //    self.fileWriter = [IXNMuseFileFactory museFileWriterWithPathString:filePath];
+    //    [self.fileWriter addAnnotationString:1 annotation:@"fileWriter created"];
+    //    [self.fileWriter flush];
+    [[RKRobotDiscoveryAgent sharedAgent] addNotificationObserver:self selector:@selector(handleRobotStateChangeNotification:)];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appWillResignActive:)
+                                                 name:UIApplicationWillResignActiveNotification
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(appDidBecomeActive:)
+                                                 name:UIApplicationDidBecomeActiveNotification
+                                               object:nil];
     return self;
 }
 
@@ -37,8 +53,9 @@
     switch (packet.packetType) {
         case IXNMuseDataPacketTypeBattery:
             NSLog(@"battery packet received");
-//            [self.fileWriter addDataPacket:1 packet:packet];
+            //            [self.fileWriter addDataPacket:1 packet:packet];
             break;
+
 //        case IXNMuseDataPacketTypeAccelerometer:
 //            NSLog(@"a%@",packet.values[0]);
 //            NSLog(@"b%@",packet.values[1]);
@@ -134,6 +151,7 @@
     if (self.lastBlink != packet.blink) {
         if (packet.blink)
             NSLog(@"blink");
+        [_robot driveWithHeading:0.0 andVelocity:0.1];
         self.lastBlink = packet.blink;
     }
 }
@@ -143,16 +161,16 @@
     switch (packet.currentConnectionState) {
         case IXNConnectionStateDisconnected:
             state = @"disconnected";
-//            [self.fileWriter addAnnotationString:1 annotation:@"disconnected"];
-//            [self.fileWriter flush];
+            //            [self.fileWriter addAnnotationString:1 annotation:@"disconnected"];
+            //            [self.fileWriter flush];
             break;
         case IXNConnectionStateConnected:
             state = @"connected";
-//            [self.fileWriter addAnnotationString:1 annotation:@"connected"];
+            //            [self.fileWriter addAnnotationString:1 annotation:@"connected"];
             break;
         case IXNConnectionStateConnecting:
             state = @"connecting";
-//            [self.fileWriter addAnnotationString:1 annotation:@"connecting"];
+            //            [self.fileWriter addAnnotationString:1 annotation:@"connecting"];
             break;
         case IXNConnectionStateNeedsUpdate: state = @"needs update"; break;
         case IXNConnectionStateUnknown: state = @"unknown"; break;
@@ -177,4 +195,67 @@
     }
 }
 
+- (void)handleRobotStateChangeNotification:(RKRobotChangedStateNotification*)n {
+    switch(n.type) {
+        case RKRobotConnecting:
+            [self handleConnecting];
+            break;
+        case RKRobotOnline: {
+            // Do not allow the robot to connect if the application is not running
+            RKConvenienceRobot *convenience = [RKConvenienceRobot convenienceWithRobot:n.robot];
+            if ([[UIApplication sharedApplication] applicationState] != UIApplicationStateActive) {
+                [convenience disconnect];
+                return;
+            }
+            self.robot = convenience;
+            [self handleConnected];
+            break;
+        }
+        case RKRobotDisconnected:
+            [self handleDisconnected];
+            self.robot = nil;
+            [RKRobotDiscoveryAgent startDiscovery];
+            break;
+        default:
+            break;
+    }
+}
+- (void)handleConnecting {
+    [_connectionLabel setText:[NSString stringWithFormat:@"%@ Connecting", _robot.robot.name]];
+}
+- (void)handleConnected {
+    [_connectionLabel setText:_robot.robot.name];
+    [self toggleLED];
+    NSLog(@"sphero connected");
+    [_robot driveWithHeading:0.0 andVelocity:0.1];
+}
+- (void)handleDisconnected {
+    _connectionLabel.text = @"Disconnected";
+    [self startDiscovery];
+    NSLog(@"sphero DISconnected");
+}
+- (void)toggleLED {
+    if(!_robot || ![_robot isConnected]) return; // stop the toggle if no robot.
+    
+    if (_ledOn) {
+        [_robot setLEDWithRed:0 green:0 blue:0];
+    }
+    else {
+        [_robot setLEDWithRed:0 green:0 blue:1];
+    }
+    _ledOn = !_ledOn;
+    [self performSelector:@selector(toggleLED) withObject:nil afterDelay:0.5];
+}
+- (void)startDiscovery {
+    _connectionLabel.text = @"Discovering Robots";
+    [RKRobotDiscoveryAgent startDiscovery];
+}
+- (void)appWillResignActive:(NSNotification*)n {
+    [RKRobotDiscoveryAgent stopDiscovery];
+    [_connectionLabel setText:@"Sleeping"];
+    [RKRobotDiscoveryAgent disconnectAll];
+}
+- (void)appDidBecomeActive:(NSNotification*)n {
+    [self startDiscovery];
+}
 @end
