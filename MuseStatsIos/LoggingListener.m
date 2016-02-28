@@ -45,7 +45,10 @@
 //            NSLog(@"c%@",packet.values[2]);
 //            break;
         case IXNMuseDataPacketTypeEeg:
-            NSLog(@"EEG");
+            NSLog(@"a%@",packet.values[0]);
+            NSLog(@"b%@",packet.values[1]);
+            NSLog(@"c%@",packet.values[2]);
+            NSLog(@"d%@",packet.values[3]);
             break;
         case IXNMuseDataPacketTypeDroppedAccelerometer:
             NSLog(@"2");
