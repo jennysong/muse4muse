@@ -95,17 +95,28 @@
     for (id sD in sortedData) {
         NSLog(@"%@",sD);
     }
-    if([sortedData[4] isEqualToValue: data[0]])
+    
+    
+    if([sortedData[4] isEqualToValue: data[0]]){
+        [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:0 green:1 blue:0]];
         NSLog(@"alpha");
-    else if ([sortedData[4] isEqualToValue: data[1]])
+    }
+    else if ([sortedData[4] isEqualToValue: data[1]]){
+        [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:0 green:0 blue:1]];
         NSLog(@"beta");
-    else if ([sortedData[4] isEqualToValue: data[2]])
+    }
+    else if ([sortedData[4] isEqualToValue: data[2]]){
+        [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:1 green:1 blue:0]];
         NSLog(@"delta");
-    else if ([sortedData[4] isEqualToValue: data[3]])
+    }
+    else if ([sortedData[4] isEqualToValue: data[3]]){
+        [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:1 green:0 blue:0]];
         NSLog(@"theta");
-    else if ([sortedData[4] isEqualToValue: data[4]])
+    }
+    else if ([sortedData[4] isEqualToValue: data[4]]){
+        [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:.5 green:.5 blue:.5]];
         NSLog(@"gammar");
-    return;
+    }
 }
 
 - (void)receiveMuseArtifactPacket:(IXNMuseArtifactPacket *)packet {
