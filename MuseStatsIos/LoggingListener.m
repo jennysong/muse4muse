@@ -14,6 +14,13 @@
 @property (nonatomic, weak) AppDelegate* delegate;
 @property (nonatomic) id<IXNMuseFileWriter> fileWriter;
 
+@property (nonatomic) id alphaRelative;
+@property (nonatomic) id betaRelative;
+@property (nonatomic) id thetaRelative;
+@property (nonatomic) id deltaRelative;
+@property (nonatomic) id gammarRelative;
+
+
 @property (nonatomic) BOOL ledOn;
 @property (strong, nonatomic) IBOutlet UILabel* connectionLabel;
 @property (strong, atomic) RKConvenienceRobot* robot;
@@ -79,35 +86,40 @@
         case IXNMuseDataPacketTypeDrlRef:
             NSLog(@"5");
             break;
-        case IXNMuseDataPacketTypeAlphaAbsolute:
-            NSLog(@"AlphaAbsolute:%@",packet.values[0]);
-            break;
-        case IXNMuseDataPacketTypeBetaAbsolute:
-            NSLog(@"BetaAbsolute:%@",packet.values[0]);
-            break;
-        case IXNMuseDataPacketTypeDeltaAbsolute:
-            NSLog(@"DeltaAbsolute:%@",packet.values[0]);
-            break;
-        case IXNMuseDataPacketTypeThetaAbsolute:
-            NSLog(@"ThetaAbsolute:%@",packet.values[0]);
-            break;
-        case IXNMuseDataPacketTypeGammaAbsolute:
-            NSLog(@"GammaAbsolute:%@",packet.values[0]);
-            break;
+//        case IXNMuseDataPacketTypeAlphaAbsolute:
+//            NSLog(@"AlphaAbsolute:%@",packet.values[0]);
+//            break;
+//        case IXNMuseDataPacketTypeBetaAbsolute:
+//            NSLog(@"BetaAbsolute:%@",packet.values[0]);
+//            break;
+//        case IXNMuseDataPacketTypeDeltaAbsolute:
+//            NSLog(@"DeltaAbsolute:%@",packet.values[0]);
+//            break;
+//        case IXNMuseDataPacketTypeThetaAbsolute:
+//            NSLog(@"ThetaAbsolute:%@",packet.values[0]);
+//            break;
+//        case IXNMuseDataPacketTypeGammaAbsolute:
+//            NSLog(@"GammaAbsolute:%@",packet.values[0]);
+//            break;
         case IXNMuseDataPacketTypeAlphaRelative:
             NSLog(@"AlphaRelative:%@",packet.values[0]);
+            self.alphaRelative = packet.values[0];
             break;
         case IXNMuseDataPacketTypeBetaRelative:
             NSLog(@"BetaRelative:%@",packet.values[0]);
+            self.betaRelative = packet.values[0];
             break;
         case IXNMuseDataPacketTypeDeltaRelative:
             NSLog(@"DeltaRelative:%@",packet.values[0]);
+            self.deltaRelative = packet.values[0];
             break;
         case IXNMuseDataPacketTypeThetaRelative:
             NSLog(@"ThetaRelative:%@",packet.values[0]);
+            self.thetaRelative = packet.values[0];
             break;
         case IXNMuseDataPacketTypeGammaRelative:
             NSLog(@"GammaRelative:%@",packet.values[0]);
+            self.gammarRelative = packet.values[0];
             break;
         case IXNMuseDataPacketTypeAlphaScore:
             NSLog(@"16");

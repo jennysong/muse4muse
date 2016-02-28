@@ -87,16 +87,16 @@
 //                               type:IXNMuseDataPacketTypeAccelerometer];
 //    [self.muse registerDataListener:self.loggingListener
 //                               type:IXNMuseDataPacketTypeEeg];
-    [self.muse registerDataListener:self.loggingListener
-                               type:IXNMuseDataPacketTypeAlphaAbsolute];
-    [self.muse registerDataListener:self.loggingListener
-                               type:IXNMuseDataPacketTypeBetaAbsolute];
-    [self.muse registerDataListener:self.loggingListener
-                               type:IXNMuseDataPacketTypeGammaAbsolute];
-    [self.muse registerDataListener:self.loggingListener
-                               type:IXNMuseDataPacketTypeThetaAbsolute];
-    [self.muse registerDataListener:self.loggingListener
-                               type:IXNMuseDataPacketTypeDeltaAbsolute];
+//    [self.muse registerDataListener:self.loggingListener
+//                               type:IXNMuseDataPacketTypeAlphaAbsolute];
+//    [self.muse registerDataListener:self.loggingListener
+//                               type:IXNMuseDataPacketTypeBetaAbsolute];
+//    [self.muse registerDataListener:self.loggingListener
+//                               type:IXNMuseDataPacketTypeGammaAbsolute];
+//    [self.muse registerDataListener:self.loggingListener
+//                               type:IXNMuseDataPacketTypeThetaAbsolute];
+//    [self.muse registerDataListener:self.loggingListener
+//                               type:IXNMuseDataPacketTypeDeltaAbsolute];
     [self.muse registerDataListener:self.loggingListener
                                type:IXNMuseDataPacketTypeAlphaRelative];
     [self.muse registerDataListener:self.loggingListener
