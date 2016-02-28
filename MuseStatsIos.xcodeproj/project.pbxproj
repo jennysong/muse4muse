@@ -15,6 +15,10 @@
 		5401E02C1A93DA2600FADC22 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5401E02A1A93DA2600FADC22 /* LaunchScreen.xib */; };
 		5401E0381A93DA2600FADC22 /* MuseStatsIosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5401E0371A93DA2600FADC22 /* MuseStatsIosTests.m */; };
 		54EB6BC91AA0EAA3000D8142 /* LoggingListener.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EB6BC81AA0EAA3000D8142 /* LoggingListener.m */; };
+		73EAF6E81C8306F80073B8EA /* OvalCompiler.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73EAF6E71C8306F80073B8EA /* OvalCompiler.framework */; };
+		73EAF6EC1C8307180073B8EA /* RobotKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73EAF6E91C8307180073B8EA /* RobotKit.framework */; };
+		73EAF6ED1C8307180073B8EA /* RobotUIKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 73EAF6EA1C8307180073B8EA /* RobotUIKit.bundle */; };
+		73EAF6EE1C8307180073B8EA /* RobotUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73EAF6EB1C8307180073B8EA /* RobotUIKit.framework */; };
 		E91B78621B03B8A300082B2E /* libMuse.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E91B78611B03B8A300082B2E /* libMuse.a */; };
 		E94FB6F01B03B53400B73B4B /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E94FB6EF1B03B53400B73B4B /* libc++.tbd */; };
 /* End PBXBuildFile section */
@@ -45,6 +49,10 @@
 		5401E0371A93DA2600FADC22 /* MuseStatsIosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MuseStatsIosTests.m; sourceTree = "<group>"; };
 		54EB6BC71AA0EAA3000D8142 /* LoggingListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggingListener.h; sourceTree = "<group>"; };
 		54EB6BC81AA0EAA3000D8142 /* LoggingListener.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggingListener.m; sourceTree = "<group>"; };
+		73EAF6E71C8306F80073B8EA /* OvalCompiler.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = OvalCompiler.framework; sourceTree = "<group>"; };
+		73EAF6E91C8307180073B8EA /* RobotKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RobotKit.framework; sourceTree = "<group>"; };
+		73EAF6EA1C8307180073B8EA /* RobotUIKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RobotUIKit.bundle; sourceTree = "<group>"; };
+		73EAF6EB1C8307180073B8EA /* RobotUIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RobotUIKit.framework; sourceTree = "<group>"; };
 		E91B78611B03B8A300082B2E /* libMuse.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMuse.a; sourceTree = "<group>"; };
 		E91B78631B03B8F500082B2E /* Muse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Muse.h; path = Headers/Muse/Muse.h; sourceTree = "<group>"; };
 		E94FB6EF1B03B53400B73B4B /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -55,8 +63,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73EAF6EC1C8307180073B8EA /* RobotKit.framework in Frameworks */,
 				E91B78621B03B8A300082B2E /* libMuse.a in Frameworks */,
 				E94FB6F01B03B53400B73B4B /* libc++.tbd in Frameworks */,
+				73EAF6E81C8306F80073B8EA /* OvalCompiler.framework in Frameworks */,
+				73EAF6EE1C8307180073B8EA /* RobotUIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +90,10 @@
 				5401E01A1A93DA2600FADC22 /* MuseStatsIos */,
 				5401E0341A93DA2600FADC22 /* MuseStatsIosTests */,
 				5401E0191A93DA2600FADC22 /* Products */,
+				73EAF6E91C8307180073B8EA /* RobotKit.framework */,
+				73EAF6EA1C8307180073B8EA /* RobotUIKit.bundle */,
+				73EAF6EB1C8307180073B8EA /* RobotUIKit.framework */,
+				73EAF6E71C8306F80073B8EA /* OvalCompiler.framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -220,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5401E0271A93DA2600FADC22 /* Main.storyboard in Resources */,
+				73EAF6ED1C8307180073B8EA /* RobotUIKit.bundle in Resources */,
 				5401E02C1A93DA2600FADC22 /* LaunchScreen.xib in Resources */,
 				5401E0291A93DA2600FADC22 /* Images.xcassets in Resources */,
 			);
@@ -369,7 +385,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -381,7 +400,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-ObjC",
+					"-lc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.os2.MuseStatsIos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -396,7 +419,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
@@ -408,7 +434,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-ObjC",
+					"-lc++",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.os2.MuseStatsIos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

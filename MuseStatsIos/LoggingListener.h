@@ -7,6 +7,11 @@
 #import "Muse.h"
 #import "AppDelegate.h"
 
+//sphero
+#import <UIKit/UIKit.h>
+//
+
+
 @interface LoggingListener : NSObject<
     IXNMuseDataListener, IXNMuseConnectionListener
 >

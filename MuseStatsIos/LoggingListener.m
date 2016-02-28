@@ -40,6 +40,9 @@
 //            [self.fileWriter addDataPacket:1 packet:packet];
             break;
         case IXNMuseDataPacketTypeAccelerometer:
+            NSLog(@"a%@",packet.values[0]);
+            NSLog(@"b%@",packet.values[1]);
+            NSLog(@"c%@",packet.values[2]);
             break;
         default:
             break;
@@ -55,7 +58,7 @@
     }
     if (self.lastBlink != packet.blink) {
         if (packet.blink)
-            NSLog(@"blink");
+//            NSLog(@"blink");
         self.lastBlink = packet.blink;
     }
 }

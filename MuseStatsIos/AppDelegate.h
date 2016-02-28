@@ -5,6 +5,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Muse.h"
+#import <RobotKit/RobotKit.h>
+#import <RobotUIKit/RobotUIKit.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
