@@ -28,14 +28,14 @@
      * Set <key>UIFileSharingEnabled</key> to true in Info.plist if you want
      * to see the file in iTunes
      */
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(
-//        NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString *filePath =
-//        [documentsDirectory stringByAppendingPathComponent:@"new_muse_file.muse"];
-//    self.fileWriter = [IXNMuseFileFactory museFileWriterWithPathString:filePath];
-//    [self.fileWriter addAnnotationString:1 annotation:@"fileWriter created"];
-//    [self.fileWriter flush];
+    //    NSArray *paths = NSSearchPathForDirectoriesInDomains(
+    //        NSDocumentDirectory, NSUserDomainMask, YES);
+    //    NSString *documentsDirectory = [paths objectAtIndex:0];
+    //    NSString *filePath =
+    //        [documentsDirectory stringByAppendingPathComponent:@"new_muse_file.muse"];
+    //    self.fileWriter = [IXNMuseFileFactory museFileWriterWithPathString:filePath];
+    //    [self.fileWriter addAnnotationString:1 annotation:@"fileWriter created"];
+    //    [self.fileWriter flush];
     [[RKRobotDiscoveryAgent sharedAgent] addNotificationObserver:self selector:@selector(handleRobotStateChangeNotification:)];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -53,12 +53,12 @@
     switch (packet.packetType) {
         case IXNMuseDataPacketTypeBattery:
             NSLog(@"battery packet received");
-//            [self.fileWriter addDataPacket:1 packet:packet];
+            //            [self.fileWriter addDataPacket:1 packet:packet];
             break;
         case IXNMuseDataPacketTypeAccelerometer:
-//            NSLog(@"a%@",packet.values[0]);
-//            NSLog(@"b%@",packet.values[1]);
-//            NSLog(@"c%@",packet.values[2]);
+            //            NSLog(@"a%@",packet.values[0]);
+            //            NSLog(@"b%@",packet.values[1]);
+            //            NSLog(@"c%@",packet.values[2]);
             break;
         default:
             break;
@@ -75,7 +75,7 @@
     if (self.lastBlink != packet.blink) {
         if (packet.blink)
             NSLog(@"blink");
-            [_robot driveWithHeading:0.0 andVelocity:0.1];
+        [_robot driveWithHeading:0.0 andVelocity:0.1];
         self.lastBlink = packet.blink;
     }
 }
@@ -85,16 +85,16 @@
     switch (packet.currentConnectionState) {
         case IXNConnectionStateDisconnected:
             state = @"disconnected";
-//            [self.fileWriter addAnnotationString:1 annotation:@"disconnected"];
-//            [self.fileWriter flush];
+            //            [self.fileWriter addAnnotationString:1 annotation:@"disconnected"];
+            //            [self.fileWriter flush];
             break;
         case IXNConnectionStateConnected:
             state = @"connected";
-//            [self.fileWriter addAnnotationString:1 annotation:@"connected"];
+            //            [self.fileWriter addAnnotationString:1 annotation:@"connected"];
             break;
         case IXNConnectionStateConnecting:
             state = @"connecting";
-//            [self.fileWriter addAnnotationString:1 annotation:@"connecting"];
+            //            [self.fileWriter addAnnotationString:1 annotation:@"connecting"];
             break;
         case IXNConnectionStateNeedsUpdate: state = @"needs update"; break;
         case IXNConnectionStateUnknown: state = @"unknown"; break;
