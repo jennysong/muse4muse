@@ -95,15 +95,15 @@
     for (id sD in sortedData) {
         NSLog(@"%@",sD);
     }
-    if([sortedData[0] isEqualToValue: data[0]])
+    if([sortedData[4] isEqualToValue: data[0]])
         NSLog(@"alpha");
-    else if ([sortedData[0] isEqualToValue: data[1]])
+    else if ([sortedData[4] isEqualToValue: data[1]])
         NSLog(@"beta");
-    else if ([sortedData[0] isEqualToValue: data[2]])
+    else if ([sortedData[4] isEqualToValue: data[2]])
         NSLog(@"delta");
-    else if ([sortedData[0] isEqualToValue: data[3]])
+    else if ([sortedData[4] isEqualToValue: data[3]])
         NSLog(@"theta");
-    else if ([sortedData[0] isEqualToValue: data[4]])
+    else if ([sortedData[4] isEqualToValue: data[4]])
         NSLog(@"gammar");
     return;
 }
