@@ -22,4 +22,6 @@
 - (void)receiveMuseArtifactPacket:(IXNMuseArtifactPacket *)packet;
 - (void)receiveMuseConnectionPacket:(IXNMuseConnectionPacket *)packet;
 
+- (void) analyzeRelativeData;
+
 @end

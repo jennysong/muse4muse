@@ -62,95 +62,35 @@
             NSLog(@"battery packet received");
             //            [self.fileWriter addDataPacket:1 packet:packet];
             break;
-
-//        case IXNMuseDataPacketTypeAccelerometer:
-//            NSLog(@"a%@",packet.values[0]);
-//            NSLog(@"b%@",packet.values[1]);
-//            NSLog(@"c%@",packet.values[2]);
-//            break;
-//        case IXNMuseDataPacketTypeEeg:
-//            NSLog(@"a%@",packet.values[0]);
-//            NSLog(@"b%@",packet.values[1]);
-//            NSLog(@"c%@",packet.values[2]);
-//            NSLog(@"d%@",packet.values[3]);
-//            break;
-        case IXNMuseDataPacketTypeDroppedAccelerometer:
-            NSLog(@"2");
-            break;
-        case IXNMuseDataPacketTypeDroppedEeg:
-            NSLog(@"3");
-            break;
-        case IXNMuseDataPacketTypeQuantization:
-            NSLog(@"4");
-            break;
-        case IXNMuseDataPacketTypeDrlRef:
-            NSLog(@"5");
-            break;
-//        case IXNMuseDataPacketTypeAlphaAbsolute:
-//            NSLog(@"AlphaAbsolute:%@",packet.values[0]);
-//            break;
-//        case IXNMuseDataPacketTypeBetaAbsolute:
-//            NSLog(@"BetaAbsolute:%@",packet.values[0]);
-//            break;
-//        case IXNMuseDataPacketTypeDeltaAbsolute:
-//            NSLog(@"DeltaAbsolute:%@",packet.values[0]);
-//            break;
-//        case IXNMuseDataPacketTypeThetaAbsolute:
-//            NSLog(@"ThetaAbsolute:%@",packet.values[0]);
-//            break;
-//        case IXNMuseDataPacketTypeGammaAbsolute:
-//            NSLog(@"GammaAbsolute:%@",packet.values[0]);
-//            break;
         case IXNMuseDataPacketTypeAlphaRelative:
-            NSLog(@"AlphaRelative:%@",packet.values[0]);
             self.alphaRelative = packet.values[0];
             break;
         case IXNMuseDataPacketTypeBetaRelative:
-            NSLog(@"BetaRelative:%@",packet.values[0]);
             self.betaRelative = packet.values[0];
             break;
         case IXNMuseDataPacketTypeDeltaRelative:
-            NSLog(@"DeltaRelative:%@",packet.values[0]);
             self.deltaRelative = packet.values[0];
             break;
         case IXNMuseDataPacketTypeThetaRelative:
-            NSLog(@"ThetaRelative:%@",packet.values[0]);
             self.thetaRelative = packet.values[0];
             break;
         case IXNMuseDataPacketTypeGammaRelative:
-            NSLog(@"GammaRelative:%@",packet.values[0]);
             self.gammarRelative = packet.values[0];
-            break;
-        case IXNMuseDataPacketTypeAlphaScore:
-            NSLog(@"16");
-            break;
-        case IXNMuseDataPacketTypeBetaScore:
-            NSLog(@"17");
-            break;
-        case IXNMuseDataPacketTypeDeltaScore:
-            NSLog(@"18");
-            break;
-        case IXNMuseDataPacketTypeThetaScore:
-            NSLog(@"19");
-            break;
-        case IXNMuseDataPacketTypeGammaScore:
-            NSLog(@"20");
-            break;
-        case IXNMuseDataPacketTypeHorseshoe:
-            NSLog(@"21");
-            break;
-        case IXNMuseDataPacketTypeArtifacts:
-            NSLog(@"22");
-            break;
-        case IXNMuseDataPacketTypeMellow:
-            NSLog(@"23");
-            break;
-        case IXNMuseDataPacketTypeConcentration:
-            NSLog(@"24");
+            [self analyzeRelativeData];
             break;
         default:
             break;
     }
+}
+
+- (void) analyzeRelativeData {
+    NSLog(@"AlphaRelative:%@",self.alphaRelative);
+    NSLog(@"BetaRelative:%@",self.betaRelative);
+    NSLog(@"DeltaRelative:%@",self.deltaRelative);
+    NSLog(@"ThetaRelative:%@",self.thetaRelative);
+    NSLog(@"GammarRelative:%@",self.gammarRelative);
+
+    return;
 }
 
 - (void)receiveMuseArtifactPacket:(IXNMuseArtifactPacket *)packet {
