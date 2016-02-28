@@ -61,12 +61,12 @@
 //            NSLog(@"b%@",packet.values[1]);
 //            NSLog(@"c%@",packet.values[2]);
 //            break;
-        case IXNMuseDataPacketTypeEeg:
-            NSLog(@"a%@",packet.values[0]);
-            NSLog(@"b%@",packet.values[1]);
-            NSLog(@"c%@",packet.values[2]);
-            NSLog(@"d%@",packet.values[3]);
-            break;
+//        case IXNMuseDataPacketTypeEeg:
+//            NSLog(@"a%@",packet.values[0]);
+//            NSLog(@"b%@",packet.values[1]);
+//            NSLog(@"c%@",packet.values[2]);
+//            NSLog(@"d%@",packet.values[3]);
+//            break;
         case IXNMuseDataPacketTypeDroppedAccelerometer:
             NSLog(@"2");
             break;
@@ -80,34 +80,34 @@
             NSLog(@"5");
             break;
         case IXNMuseDataPacketTypeAlphaAbsolute:
-            NSLog(@"6");
+            NSLog(@"AlphaAbsolute:%@",packet.values[0]);
             break;
         case IXNMuseDataPacketTypeBetaAbsolute:
-            NSLog(@"7");
+            NSLog(@"BetaAbsolute:%@",packet.values[0]);
             break;
         case IXNMuseDataPacketTypeDeltaAbsolute:
-            NSLog(@"8");
+            NSLog(@"DeltaAbsolute:%@",packet.values[0]);
             break;
         case IXNMuseDataPacketTypeThetaAbsolute:
-            NSLog(@"9");
+            NSLog(@"ThetaAbsolute:%@",packet.values[0]);
             break;
         case IXNMuseDataPacketTypeGammaAbsolute:
-            NSLog(@"10");
+            NSLog(@"GammaAbsolute:%@",packet.values[0]);
             break;
         case IXNMuseDataPacketTypeAlphaRelative:
-            NSLog(@"11");
+            NSLog(@"AlphaRelative:%@",packet.values[0]);
             break;
         case IXNMuseDataPacketTypeBetaRelative:
-            NSLog(@"12");
+            NSLog(@"BetaRelative:%@",packet.values[0]);
             break;
         case IXNMuseDataPacketTypeDeltaRelative:
-            NSLog(@"13");
+            NSLog(@"DeltaRelative:%@",packet.values[0]);
             break;
         case IXNMuseDataPacketTypeThetaRelative:
-            NSLog(@"14");
+            NSLog(@"ThetaRelative:%@",packet.values[0]);
             break;
         case IXNMuseDataPacketTypeGammaRelative:
-            NSLog(@"15");
+            NSLog(@"GammaRelative:%@",packet.values[0]);
             break;
         case IXNMuseDataPacketTypeAlphaScore:
             NSLog(@"16");
