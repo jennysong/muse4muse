@@ -198,7 +198,7 @@
 				TargetAttributes = {
 					5401E0171A93DA2600FADC22 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = J8QT82HJJS;
+						DevelopmentTeam = N4K579X5P8;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -406,7 +406,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.os.MuseStatsIos;
+				PRODUCT_BUNDLE_IDENTIFIER = com.os2.MuseStatsIos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -440,7 +440,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.os.MuseStatsIos;
+				PRODUCT_BUNDLE_IDENTIFIER = com.os2.MuseStatsIos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;

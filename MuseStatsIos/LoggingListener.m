@@ -20,6 +20,8 @@
 @property (nonatomic) id deltaRelative;
 @property (nonatomic) id gammarRelative;
 
+@property (nonatomic) float headPosition;
+
 
 @property (nonatomic) BOOL ledOn;
 @property (strong, nonatomic) IBOutlet UILabel* connectionLabel;
@@ -92,30 +94,47 @@
     NSLog(@"GammarRelative:%@",self.gammarRelative);
     NSArray *data = @[self.alphaRelative,self.betaRelative,self.deltaRelative,self.thetaRelative,self.gammarRelative];
     NSArray *sortedData = [data sortedArrayUsingSelector: @selector(compare:)];
-    for (id sD in sortedData) {
-        NSLog(@"%@",sD);
-    }
+//    for (id sD in sortedData) {
+//        NSLog(@"%@",sD);
+//    }
     
     
     if([sortedData[4] isEqualToValue: data[0]]){
         [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:0 green:1 blue:0]];
-        NSLog(@"alpha");
+        if ([self.alphaRelative floatValue] >= 0.5){
+            NSLog(@"TURN!!");
+        };
+//        NSLog(@"alpha");
     }
     else if ([sortedData[4] isEqualToValue: data[1]]){
         [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:0 green:0 blue:1]];
-        NSLog(@"beta");
+        if ([self.betaRelative floatValue] >= 0.3){
+            NSLog(@"GO!!");
+            [_robot driveWithHeading:self.headPosition andVelocity:0.1];
+        };
+//        NSLog(@"beta");
     }
     else if ([sortedData[4] isEqualToValue: data[2]]){
-        [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:1 green:1 blue:0]];
-        NSLog(@"delta");
+        [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:1 green:0 blue:0]];
+        if ([self.DeltaRelative floatValue] >= 0.23){
+            NSLog(@"GO!!");
+            [_robot driveWithHeading:self.headPosition andVelocity:0.1];
+        };
+//        NSLog(@"delta");
+        
     }
     else if ([sortedData[4] isEqualToValue: data[3]]){
-        [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:1 green:0 blue:0]];
-        NSLog(@"theta");
+        [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:1 green:1 blue:0]];
+//        NSLog(@"theta");
     }
+    
     else if ([sortedData[4] isEqualToValue: data[4]]){
         [_robot sendCommand:[RKRGBLEDOutputCommand commandWithRed:.5 green:.5 blue:.5]];
-        NSLog(@"gammar");
+        if ([self.gammarRelative floatValue] >= 0.3){
+            NSLog(@"GO FASTER!!");
+            [_robot driveWithHeading:self.headPosition andVelocity:0.3];
+        };
+//        NSLog(@"gammar");
     }
 }
 
@@ -129,7 +148,8 @@
     if (self.lastBlink != packet.blink) {
         if (packet.blink)
             NSLog(@"blink");
-        [_robot driveWithHeading:0.0 andVelocity:0.1];
+            self.headPosition = self.headPosition + 45.0;
+            [_robot driveWithHeading:self.headPosition andVelocity:0.0];
         self.lastBlink = packet.blink;
     }
 }
@@ -145,6 +165,7 @@
         case IXNConnectionStateConnected:
             state = @"connected";
             //            [self.fileWriter addAnnotationString:1 annotation:@"connected"];
+            self.headPosition = 0.0;
             break;
         case IXNConnectionStateConnecting:
             state = @"connecting";
@@ -205,7 +226,7 @@
     [_connectionLabel setText:_robot.robot.name];
     [self toggleLED];
     NSLog(@"sphero connected");
-    [_robot driveWithHeading:0.0 andVelocity:0.1];
+    [_robot driveWithHeading:self.headPosition andVelocity:0.1];
 }
 - (void)handleDisconnected {
     _connectionLabel.text = @"Disconnected";
