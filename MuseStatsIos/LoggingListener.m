@@ -63,6 +63,7 @@
             //            [self.fileWriter addDataPacket:1 packet:packet];
             break;
         case IXNMuseDataPacketTypeAlphaRelative:
+            //NSLog(@"%@",packet.values[0]);
             self.alphaRelative = packet.values[0];
             break;
         case IXNMuseDataPacketTypeBetaRelative:
@@ -89,7 +90,21 @@
     NSLog(@"DeltaRelative:%@",self.deltaRelative);
     NSLog(@"ThetaRelative:%@",self.thetaRelative);
     NSLog(@"GammarRelative:%@",self.gammarRelative);
-
+    NSArray *data = @[self.alphaRelative,self.betaRelative,self.deltaRelative,self.thetaRelative,self.gammarRelative];
+    NSArray *sortedData = [data sortedArrayUsingSelector: @selector(compare:)];
+    for (id sD in sortedData) {
+        NSLog(@"%@",sD);
+    }
+    if([sortedData[0] isEqualToValue: data[0]])
+        NSLog(@"alpha");
+    else if ([sortedData[0] isEqualToValue: data[1]])
+        NSLog(@"beta");
+    else if ([sortedData[0] isEqualToValue: data[2]])
+        NSLog(@"delta");
+    else if ([sortedData[0] isEqualToValue: data[3]])
+        NSLog(@"theta");
+    else if ([sortedData[0] isEqualToValue: data[4]])
+        NSLog(@"gammar");
     return;
 }
 
