@@ -55,10 +55,83 @@
             NSLog(@"battery packet received");
             //            [self.fileWriter addDataPacket:1 packet:packet];
             break;
-        case IXNMuseDataPacketTypeAccelerometer:
-            //            NSLog(@"a%@",packet.values[0]);
-            //            NSLog(@"b%@",packet.values[1]);
-            //            NSLog(@"c%@",packet.values[2]);
+
+//        case IXNMuseDataPacketTypeAccelerometer:
+//            NSLog(@"a%@",packet.values[0]);
+//            NSLog(@"b%@",packet.values[1]);
+//            NSLog(@"c%@",packet.values[2]);
+//            break;
+        case IXNMuseDataPacketTypeEeg:
+            NSLog(@"EEG");
+            break;
+        case IXNMuseDataPacketTypeDroppedAccelerometer:
+            NSLog(@"2");
+            break;
+        case IXNMuseDataPacketTypeDroppedEeg:
+            NSLog(@"3");
+            break;
+        case IXNMuseDataPacketTypeQuantization:
+            NSLog(@"4");
+            break;
+        case IXNMuseDataPacketTypeDrlRef:
+            NSLog(@"5");
+            break;
+        case IXNMuseDataPacketTypeAlphaAbsolute:
+            NSLog(@"6");
+            break;
+        case IXNMuseDataPacketTypeBetaAbsolute:
+            NSLog(@"7");
+            break;
+        case IXNMuseDataPacketTypeDeltaAbsolute:
+            NSLog(@"8");
+            break;
+        case IXNMuseDataPacketTypeThetaAbsolute:
+            NSLog(@"9");
+            break;
+        case IXNMuseDataPacketTypeGammaAbsolute:
+            NSLog(@"10");
+            break;
+        case IXNMuseDataPacketTypeAlphaRelative:
+            NSLog(@"11");
+            break;
+        case IXNMuseDataPacketTypeBetaRelative:
+            NSLog(@"12");
+            break;
+        case IXNMuseDataPacketTypeDeltaRelative:
+            NSLog(@"13");
+            break;
+        case IXNMuseDataPacketTypeThetaRelative:
+            NSLog(@"14");
+            break;
+        case IXNMuseDataPacketTypeGammaRelative:
+            NSLog(@"15");
+            break;
+        case IXNMuseDataPacketTypeAlphaScore:
+            NSLog(@"16");
+            break;
+        case IXNMuseDataPacketTypeBetaScore:
+            NSLog(@"17");
+            break;
+        case IXNMuseDataPacketTypeDeltaScore:
+            NSLog(@"18");
+            break;
+        case IXNMuseDataPacketTypeThetaScore:
+            NSLog(@"19");
+            break;
+        case IXNMuseDataPacketTypeGammaScore:
+            NSLog(@"20");
+            break;
+        case IXNMuseDataPacketTypeHorseshoe:
+            NSLog(@"21");
+            break;
+        case IXNMuseDataPacketTypeArtifacts:
+            NSLog(@"22");
+            break;
+        case IXNMuseDataPacketTypeMellow:
+            NSLog(@"23");
+            break;
+        case IXNMuseDataPacketTypeConcentration:
+            NSLog(@"24");
             break;
         default:
             break;
