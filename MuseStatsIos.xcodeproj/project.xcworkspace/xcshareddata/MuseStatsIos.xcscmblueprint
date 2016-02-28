@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "323EC33EEAF8566442767D171918A63868A8B16B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "323EC33EEAF8566442767D171918A63868A8B16B" : 0,
+    "5BE677357093A5A5683A95D324CBCE1546CDC20A" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "994CD19E-0A73-4C95-9D55-27E30B480170",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "323EC33EEAF8566442767D171918A63868A8B16B" : "",
+    "5BE677357093A5A5683A95D324CBCE1546CDC20A" : "Sphero-iOS-SDK\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MuseStatsIos",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MuseStatsIos.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jennysong\/muse4muse.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "323EC33EEAF8566442767D171918A63868A8B16B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/orbotix\/Sphero-iOS-SDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5BE677357093A5A5683A95D324CBCE1546CDC20A"
+    }
+  ]
+}
